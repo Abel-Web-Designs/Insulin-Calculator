@@ -51,11 +51,10 @@
         <h1>Insulin Calculator</h1>
         <div class="input-group">
             <input type="text" id="bloodsugar" placeholder="Blood Sugar">
-            <span> - 120 / 19</span>
         </div>
         <div class="input-group">
             <input type="text" id="carbs" placeholder="Carbohydrates">
-            <span> / 18</span>
+            <span> / 16</span>
         </div>
         <button onclick="calculate()">Calculate Insulin</button>
         <hr>
@@ -66,17 +65,29 @@
         function calculate() {
             var bloodSugar = parseFloat(document.getElementById('bloodsugar').value);
             var carbs = parseFloat(document.getElementById('carbs').value);
-
+    
             var firstResult = 0;
-            if (bloodSugar >= 120) {
-                firstResult = (bloodSugar - 120) / 19;
+    
+            if (bloodSugar >= 151 && bloodSugar <= 200) {
+                firstResult = 1;
+            } else if (bloodSugar >= 201 && bloodSugar <= 250) {
+                firstResult = 2;
+            } else if (bloodSugar >= 251 && bloodSugar <= 300) {
+                firstResult = 3;
+            } else if (bloodSugar >= 301 && bloodSugar <= 350) {
+                firstResult = 4;
+            } else if (bloodSugar >= 351 && bloodSugar <= 400) {
+                firstResult = 5;
+            } else if (bloodSugar >= 401 && bloodSugar <= 450) {
+                firstResult = 6;
             }
-
-            var secondResult = carbs / 18;
+    
+            var secondResult = carbs / 16;
             var totalUnits = firstResult + secondResult;
-
+    
             document.getElementById('output').innerText = "Total Units: " + totalUnits.toFixed(2);
         }
     </script>
+    
 </body>
 </html>

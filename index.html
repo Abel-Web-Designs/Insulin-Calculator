@@ -54,7 +54,7 @@
         </div>
         <div class="input-group">
             <input type="text" id="carbs" placeholder="Carbohydrates">
-            <span> / 16</span>
+            <span> / 14</span>
         </div>
         <button onclick="calculate()">Calculate Insulin</button>
         <hr>
@@ -82,7 +82,7 @@
                 firstResult = 6;
             }
     
-            var secondResult = carbs / 16;
+            var secondResult = carbs / 14;
             var totalUnits = firstResult + secondResult;
     
             document.getElementById('output').innerText = "Total Units: " + totalUnits.toFixed(2);

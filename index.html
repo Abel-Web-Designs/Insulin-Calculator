@@ -80,8 +80,15 @@
                 firstResult = 5;
             } else if (bloodSugar >= 401 && bloodSugar <= 450) {
                 firstResult = 6;
+            } else if (bloodSugar >= 451 && bloodSugar <= 500) {
+                firstResult = 7;
+            } else if (bloodSugar >= 501 && bloodSugar <= 550) {
+                firstResult = 8;
+            } else if (bloodSugar >= 551 && bloodSugar <= 600) {
+                firstResult = 9;
             }
-    
+
+            var secondResult = 0;
             var secondResult = carbs / 14;
             var totalUnits = firstResult + secondResult;
     

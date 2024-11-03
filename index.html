@@ -66,6 +66,7 @@
             var bloodSugar = parseFloat(document.getElementById('bloodsugar').value);
             var carbs = parseFloat(document.getElementById('carbs').value);
     
+            /*
             var firstResult = 0;
     
             if (bloodSugar >= 151 && bloodSugar <= 200) {
@@ -86,6 +87,12 @@
                 firstResult = 8;
             } else if (bloodSugar >= 551 && bloodSugar <= 600) {
                 firstResult = 9;
+            }
+            */
+            if (bloodSugar >= 150){
+                var firstResult = (bloodSugar - 150) / 35;
+            } else if (bloodSugar <= 149) {
+                var firstResult = 0;
             }
 
             var secondResult = carbs / 14;

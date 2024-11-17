@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Insulin Calculator</title>
+  </head>
+<body>
+
+    <div class="container">
+        <center><h1>Insulin Calculator</h1></center>
+
+        <!-- Blood Glucose Input -->
+        <div class="input-group mb-3">
+            <input type="text" id="bloodsugar" class="form-control" placeholder="Blood Sugar" aria-label="Blood Sugar" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2">mg/dL</span>
+            </div>
+        </div>
+
+        <!-- Carbohydrate Input -->
+        <div class="input-group mb-3">
+            <input type="number" id="carbs" class="form-control" placeholder="Carbohydrates" aria-label="Carbohydrates" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2">Carbohydrates</span>
+            </div>
+        </div>
+
+        <!-- Calculate Button -->
+        <button onclick="calculate()" type="button" class="btn btn-dark">Calculate Insulin</button>
+
+        <hr>
+
+        <!-- Label for result -->
+        <p class="lead">
+            <span class="result" id="output">Total Units:</span>
+        </p>        
+          
+        <hr>
+
+        <center><h3><u>Current Settings</u></h3></center>
+        <div class="accordion" id="accordionExample">
+
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Target Glucose
+                  </button>
+                </h2>
+              </div>
+          
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  150
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Glucose Factor
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                  35
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Carbohydrate Factor
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                  14
+                </div>
+              </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            var bloodSugar = parseFloat(document.getElementById('bloodsugar').value);
+            var carbs = parseFloat(document.getElementById('carbs').value);
+
+            //Calculate the corrective dose
+            if (bloodSugar >= 150) {
+                var firstResult = (bloodSugar - 150) / 35;
+            } else if (bloodSugar <= 149) {
+                var firstResult = 0;
+            }
+
+            //Calculate the carbohydrate dose
+            var secondResult = carbs / 14;
+
+            //Add the doses together for the total amount to give
+            var totalUnits = firstResult + secondResult;
+    
+            //Make the output label display how many units to be given
+            document.getElementById('output').innerText = "Total Units: " + totalUnits.toFixed(2);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>

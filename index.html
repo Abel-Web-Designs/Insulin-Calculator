@@ -25,11 +25,11 @@
     </nav>
 
     <div class="container">
-        <center><h1>Insulin Calculator</h1></center>
+        <center><h1 class="display-4">Insulin Calculator</h1></center>
 
         <!-- Blood Glucose Input -->
         <div class="input-group mb-3">
-            <input type="number" id="bloodsugar" class="form-control" placeholder="Blood Sugar" aria-label="Blood Sugar" aria-describedby="basic-addon2">
+            <input type="text" id="bloodsugar" class="form-control" placeholder="Blood Sugar" aria-label="Blood Sugar" aria-describedby="basic-addon2">
             <div class="input-group-append">
               <span class="input-group-text" id="basic-addon2">mg/dL</span>
             </div>
@@ -99,7 +99,7 @@
               </div>
               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                 <div class="card-body">
-                  14
+                  12
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@
             }
 
             //Calculate the carbohydrate dose
-            var secondResult = carbs / 14;
+            var secondResult = carbs / 12;
 
             //Add the doses together for the total amount to give
             var totalUnits = firstResult + secondResult;

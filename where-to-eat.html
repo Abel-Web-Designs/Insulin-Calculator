@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Picker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            font-size: 16px;
+        }
+
+        button {
+            background: #ff5e62;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #e04e50;
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border-radius: 50%;
+            border: 8px solid #ff5e62;
+            overflow: hidden;
+        }
+
+        .wheel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(
+                #ff5e62 0% 25%, 
+                #ff9966 25% 50%, 
+                #ffcc66 50% 75%, 
+                #ffea66 75% 100%
+            );
+            border-radius: 50%;
+            transition: transform 3s ease-out;
+        }
+
+        .result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Where Should We Eat?</h1>
+        <textarea id="restaurantInput" placeholder="Enter restaurants, one per line..."></textarea>
+        <button onclick="spinWheel()">Spin the Wheel</button>
+        
+        <div class="wheel-container">
+            <div class="wheel" id="wheel"></div>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function spinWheel() {
+            let input = document.getElementById("restaurantInput").value.trim();
+            let restaurants = input.split("\n").map(item => item.trim()).filter(item => item);
+            
+            if (restaurants.length === 0) {
+                alert("Please enter some restaurants!");
+                return;
+            }
+
+            // Randomly pick one restaurant
+            let selectedIndex = Math.floor(Math.random() * restaurants.length);
+            let selectedRestaurant = restaurants[selectedIndex];
+
+            // Spin animation
+            let wheel = document.getElementById("wheel");
+            let rotations = Math.floor(Math.random() * 10) + 5; // Random rotations
+            let angle = rotations * 360 + (selectedIndex * (360 / restaurants.length));
+
+            wheel.style.transform = `rotate(${angle}deg)`;
+
+            // Show result after spinning
+            setTimeout(() => {
+                document.getElementById("result").innerText = `You should eat at: ${selectedRestaurant}`;
+            }, 3000); // Wait for the spin animation to finish
+        }
+    </script>
+
+</body>
+</html>

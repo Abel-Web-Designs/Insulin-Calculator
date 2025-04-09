@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" href="icon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <style>
+      body {
+        background-color: #343a40;
+      }
+    </style>    
     <title>Insulin Calculator</title>
   </head>
 <body>
@@ -25,7 +30,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="p-3 mb-2 bg-dark text-white container">
         <center><h1 class="display-4">Insulin Calculator</h1></center>
 
         <!-- Blood Glucose Input -->
@@ -45,7 +50,7 @@
         </div>
 
         <!-- Calculate Button -->
-        <center><button onclick="calculate()" type="button" class="btn btn-dark">Calculate Insulin</button></center>
+        <center><button onclick="calculate()" type="button" class="btn btn-light">Calculate Insulin</button></center>
 
         <hr>
 
@@ -57,7 +62,7 @@
         <hr>
 
         <center><h3><u>Current Settings</u></h3></center>
-        <div class="accordion" id="accordionExample">
+        <div class="p-3 mb-2 bg-dark text-white accordion" id="accordionExample">
 
             <div class="card">
               <div class="card-header" id="headingOne">
@@ -127,9 +132,20 @@
             var totalUnits = firstResult + secondResult;
     
             //Make the output label display how many units to be given
-            document.getElementById('output').innerText = "Total Units: <strong>" + totalUnits.toFixed(0) + ".0 Units</strong>";
+            document.getElementById('output').innerHTML = "Total Units: <strong>" + totalUnits.toFixed(0) + ".0 Units</strong>";
         }
     </script>
+    <script>
+      // This runs when any key is pressed
+      document.addEventListener("keydown", function(event) {
+        // Check if Enter key was pressed
+        if (event.key === "Enter") {
+          event.preventDefault(); // Prevent default behavior (like submitting forms)
+          calculate(); // Call the calculate function
+        }
+      });
+    </script>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>

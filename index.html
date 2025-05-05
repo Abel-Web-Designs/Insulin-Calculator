@@ -35,19 +35,19 @@
 
         <!-- Blood Glucose Input -->
         <div class="input-group mb-3">
-            <input type="text" id="bloodsugar" class="form-control" placeholder="Blood Sugar" aria-label="Blood Sugar" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <span class="input-group-text" id="basic-addon2">mg/dL</span>
-            </div>
+          <input type="number" inputmode="numeric" pattern="[0-9]*" id="bloodsugar" class="form-control" placeholder="Blood Sugar" aria-label="Blood Sugar" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">mg/dL</span>
+          </div>
         </div>
 
         <!-- Carbohydrate Input -->
-        <div class="input-group mb-3">
-            <input type="number" id="carbs" class="form-control" placeholder="Carbohydrates" aria-label="Carbohydrates" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <span class="input-group-text" id="basic-addon2">Carbohydrates</span>
-            </div>
+      <div class="input-group mb-3">
+        <input type="number" inputmode="numeric" pattern="[0-9]*" id="carbs" class="form-control" placeholder="Carbohydrates" aria-label="Carbohydrates" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2">Carbohydrates</span>
         </div>
+      </div>
 
         <!-- Calculate Button -->
         <center><button onclick="calculate()" type="button" class="btn btn-light">Calculate Insulin</button></center>
